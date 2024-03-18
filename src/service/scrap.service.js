@@ -1,6 +1,6 @@
 import getMetaData from 'metadata-scraper';
 import urlMetadata from 'url-metadata';
-
+import {ReferenceSchema} from '../schema/index.js'
 export const  ScrapSeviceOne =async (url)=>{
 	try{
 		if(url){
@@ -42,4 +42,7 @@ export const ScrapSeviceTwo =async (url)=>{
 	}catch(e){
 		throw new Error("Error in getting information");
 	}
+}
+export const IsExist =(url)=>{
+	return ReferenceSchema.findOne({url:url,archieve:false,active:true}).exec();
 }
